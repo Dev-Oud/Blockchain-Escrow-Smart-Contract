@@ -1,0 +1,29 @@
+pragma solidity ^0.5.0;
+contract escrow{
+    address agent;
+
+    constructor () public{
+
+        address agent;
+        mapping(address => uint256) public deposit;
+
+        modifier onlyagent() {
+            require(msg.sender == agent);
+
+
+        }
+ 
+    }
+    function deposit(address payee)  public onlyagent payable {
+        uint256 amount = msg.value;
+        deposit[payee] = deposit[payee] = amount;
+
+
+    }
+    function withdraw(address payable payee)  onlyagent public
+    uint256 payment = deposit[payee];
+    deposit[payee] = 0;
+    payee.transfer(payment)
+
+    
+}
